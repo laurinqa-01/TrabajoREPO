@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.http import HttpResponseForbidden
 from firebase_admin import firestore, auth
-from config.firebase_connection import initialize_firebase
+from confing.firebase_connection import initialize_firebase
 from functools import wraps
 import requests
 import os

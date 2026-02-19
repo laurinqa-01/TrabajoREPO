@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inventario</title>
+    <style>
+        body { font-family: Arial; background-color: #ffffff; }
+        table { width: 80%; margin: 20px auto; border-collapse: collapse; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
+        th { background-color: #f2f2f2; }
+        a { margin: 5px; text-decoration: none; }
+        .boton { padding: 5px 10px; background: #2196F3; color: white; }
+        .eliminar { background: red; color: white; }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align:center;">Lista de Productos</h2>
+
+    <div style="text-align:center;">
+        <a class="boton" href="{% url 'agregar_producto' %}">Agregar Producto</a>
+        <a class="boton" href="{% url 'dashboard' %}">Volver</a>
+    </div>
+
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Talla</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+        </tr>
+
+        {% for producto in productos %}
+        <tr>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.talla }}</td>
+            <td>{{ producto.precio }}</td>
+            <td>
+                <a class="boton" href="{% url 'editar_producto' producto.id %}">Editar</a>
+                <a class="eliminar" href="{% url 'eliminar_producto' producto.id %}">Eliminar</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No hay productos registrados</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>

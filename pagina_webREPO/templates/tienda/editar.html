@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Editar Producto</title>
+    <style>
+        body { font-family: Arial; background-color: #f2f2f2; }
+        .contenedor { width: 300px; margin: 60px auto; background: white; padding: 20px; }
+        input { width: 100%; padding: 8px; margin: 5px 0; }
+        button { width: 100%; padding: 8px; background: orange; color: white; border: none; }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h2>Editar Producto</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="nombre" value="{{ producto.nombre }}" required>
+            <input type="text" name="talla" value="{{ producto.talla }}" required>
+            <input type="number" name="precio" value="{{ producto.precio }}" required>
+            <button type="submit">Actualizar</button>
+        </form>
+
+        <p><a href="{% url 'listar_productos' %}">Cancelar</a></p>
+    </div>
+</body>
+</html>

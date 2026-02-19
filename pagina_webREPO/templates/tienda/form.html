@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nuevo Producto</title>
+    <style>
+        body { font-family: Arial; background-color: #f2f2f2; }
+        .contenedor { width: 300px; margin: 60px auto; background: white; padding: 20px; }
+        input { width: 100%; padding: 8px; margin: 5px 0; }
+        button { width: 100%; padding: 8px; background: green; color: white; border: none; }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h2>Agregar Producto</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="nombre" placeholder="Nombre" required>
+            <input type="text" name="talla" placeholder="Talla" required>
+            <input type="number" name="precio" placeholder="Precio" required>
+            <button type="submit">Guardar</button>
+        </form>
+
+        <p><a href="{% url 'listar_productos' %}">Volver</a></p>
+    </div>
+</body>
+</html>

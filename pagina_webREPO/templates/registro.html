@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro</title>
+    <style>
+        body { font-family: Arial; background-color: #f2f2f2; }
+        .contenedor { width: 300px; margin: 80px auto; background: white; padding: 20px; border-radius: 5px; }
+        input { width: 100%; padding: 8px; margin: 5px 0; }
+        button { width: 100%; padding: 8px; background: #4CAF50; color: white; border: none; }
+        .mensaje { margin-top: 10px; color: green; }
+    </style>
+</head>
+<body>
+    <div class="contenedor">
+        <h2>Registrar Vendedor</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+            <input type="email" name="email" placeholder="Correo" required>
+            <input type="password" name="password" placeholder="Contraseña" required>
+            <button type="submit">Registrar</button>
+        </form>
+
+        {% if mensaje %}
+            <p class="mensaje">{{ mensaje }}</p>
+        {% endif %}
+
+        <p><a href="{% url 'login' %}">Ir a Login</a></p>
+    </div>
+</body>
+</html>
